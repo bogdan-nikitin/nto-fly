@@ -427,8 +427,8 @@ def qr_land(data):
         set_velocity(
             vx=error_y * -QR_K,
             vy=error_x * -QR_K,
-            # vz=-0.1,
-            vz=(0 if error_x ** 2 + error_y ** 2 < 400 else -0.1),
+            vz=-0.1,
+            # vz=(0 if error_x ** 2 + error_y ** 2 < 400 else -0.1),
             frame_id='body')
         return
     lost_qr = True
