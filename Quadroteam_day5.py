@@ -22,7 +22,7 @@ SIZE = 240, 320  # HEIGHT, WIDTH
 DEFECT_MIN_DIST = 0.8
 # минимальная площадь дефекта в пикселях
 MIN_DEFECT_AREA = 20
-MIN_LINE_AREA = 400
+MIN_LINE_AREA = 300
 DEFECT_CONTOUR_COLOR = (180, 105, 255)
 OIL_CONTOUR_COLOR = (255, 0, 0)
 CONTOUR_WIDTH = 3
@@ -284,7 +284,7 @@ def line_callback(data):
             # print(round(angle, 2), error)
             # drone_height = get_telemetry(frame_id='aruco_map').z
             # print('laser height:', drone_height, ' aruco height:', get_telemetry(frame_id='aruco_map').z)
-            set_velocity(vx=0.01,
+            set_velocity(vx=0.02,
                          vy=error * (-0.004),
                          vz=(LINE_FLY_HEIGHT - drone_height) * 0.3,
                          yaw=float('nan'),
@@ -427,8 +427,8 @@ def qr_land(data):
         set_velocity(
             vx=error_y * -QR_K,
             vy=error_x * -QR_K,
-            vz=-0.1,
-            # vz=(0 if error_x ** 2 + error_y ** 2 < 400 else -0.1),
+            # vz=-0.1,
+            vz=(0 if error_x ** 2 + error_y ** 2 < 400 else -0.1),
             frame_id='body')
         return
     lost_qr = True
